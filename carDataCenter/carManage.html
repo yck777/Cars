@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="./layui/css/layui.css">
+		<link rel="stylesheet" type="text/css" href="css/carDC.css"/>
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!-- header start -->
+		<div class="layui-fluid">
+			<div class="layui-row mgt10">
+				<div class="layui-col-lg1">
+					<ul class="layui-nav cdc-nav cdc-nav-left" lay-filter="">
+					  <li class="layui-nav-item cdc-nav-li">
+					    <a href="javascript:;" class="cdc-nav-li-a">导航菜单</a>
+					    <dl class="layui-nav-child"> <!-- 二级菜单 -->
+								<dd><a href="./index.html">首页</a></dd>
+								<dd><a href="./carManage.html">车辆管理</a></dd>
+								<dd><a href="./carUse.html">用车记录</a></dd>
+								<dd><a href="./carRepair.html">维修管理</a></dd>
+								<dd><a href="./driverManage.html">司机管理</a></dd>
+					    </dl>
+					  </li>
+					</ul>
+				</div>
+				<div class="layui-col-lg10">
+					<div class="cdc-nav-md">
+						<ul class="cdc-nav-left-skewY">
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+						<div class="sort-hr-left">
+							
+						</div>
+						<div class="cdc-time">
+							2021年10月10日 10:10:10
+						</div>
+						<div class="cdc-title">
+							车辆管理
+						</div>
+						<div class="sort-hr-right">
+							
+						</div>
+						<ul class="cdc-nav-right-skewY">
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+					</div>
+				</div>
+				<div class="layui-col-lg1">
+					<ul class="layui-nav cdc-nav cdc-nav-right" lay-filter="">
+					  <li class="layui-nav-item cdc-nav-li">
+					    <a href="javascript:;" class="cdc-nav-li-a">账号管理</a>
+					    <dl class="layui-nav-child"> <!-- 二级菜单 -->
+					      <dd><a href="">修改密码</a></dd>
+					      <dd><a href="">管理记录</a></dd>
+					      <dd><a href="">退出登录</a></dd>
+					    </dl>
+					  </li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- header end -->
+		<div class="layui-fluid">
+			<div class="layui-row mgt20 layui-col-space10">
+				<div class="layui-col-lg3">
+					<div class="cdc-box1" style="height: 23vh;">
+						<div class="left-hr"></div>
+						<div class="right-hr"></div>
+						<div class="top-hr"></div>
+						<div class="bottom-hr"></div>
+						<div class="top-hr-b"></div>
+						<div class="bottom-hr-b1"></div>
+						<div class="bottom-hr-b2"></div>
+						<div class="box1-title">
+							当前车辆状态
+						</div>
+						<div class="box1-content">
+							<div id="carStatus" style="height: 20vh;">
+								
+							</div>
+						</div>
+					</div>
+					
+					<div class="cdc-box1 mgt20" style="height: 27vh;">
+						<div class="left-hr"></div>
+						<div class="right-hr"></div>
+						<div class="top-hr" style="width:60%"></div>
+						<div class="bottom-hr"></div>
+						<div class="top-hr-b" style="left: 140px;"></div>
+						<div class="bottom-hr-b1"></div>
+						<div class="bottom-hr-b2"></div>
+						<div class="box1-title" style="width: 140px;">
+							当前车辆类型空闲
+						</div>
+						<div class="box1-content">
+							<div id="carType" style="height: 25vh;">
+								
+							</div>
+						</div>
+					</div>
+					<div class="cdc-box1 mgt20" style="height: 38vh;">
+						<div class="left-hr"></div>
+						<div class="right-hr"></div>
+						<div class="top-hr" style="width:60%"></div>
+						<div class="bottom-hr"></div>
+						<div class="top-hr-b" style="left: 140px;"></div>
+						<div class="bottom-hr-b1"></div>
+						<div class="bottom-hr-b2"></div>
+						<div class="box1-title" style="width: 140px;">
+							车辆预警
+						</div>
+						<div class="box1-content">
+							<div class="layui-row">
+								<div class="layui-col-lg6">
+									<div id="carWarningNj" style="height: 18vh;">
+										<!-- 年检 -->
+									</div>
+								</div>
+								<div class="layui-col-lg6">
+									<div id="carWarningBy" style="height: 18vh;">
+										<!-- 保养 -->
+									</div>
+								</div>
+								<div class="layui-col-lg6">
+									<div id="carWarningNx" style="height: 18vh;">
+										<!-- 年限 -->
+									</div>
+								</div>
+								<div class="layui-col-lg6">
+									<div id="carWarningBx" style="height: 18vh;">
+										<!-- 保险 -->
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-lg6">
+					<div class="layui-row">
+						<div class="layui-col-lg3">
+							<div class="cdc-numBox1">
+								<div class="cdc-yuan1 rotation"></div>
+								<div class="cdc-yuan3 rotation2"></div>
+								<div class="cdc-yuan2">
+									<h2>68</h2>
+									<p>警用车量</p>
+								</div>
+								
+							</div>
+							
+							<!-- <div class="cdc-numBox1">
+								<div class="cdc-yuan6 rotation"></div>
+								<div class="cdc-yuan5">
+									<h2>22</h2>
+									<p>智能柜总数</p>
+								</div>
+							</div> -->
+						</div>
+						<div class="layui-col-lg6">
+							<div class="cdc-numBox2">
+								<h2>车辆总数</h2>
+								<ul id="cont1" class=""></ul>
+							</div>							
+						</div>
+						<div class="layui-col-lg3">
+							<div class="cdc-numBox1">
+								<div class="cdc-yuan4 rotation"></div>
+								<div class="cdc-yuan5">
+									<h2>42</h2>
+									<p>普通车辆</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="layui-row" style="margin-top: 50px;">
+						<div class="cdc-box2">							
+							<div class="box2-ss">
+								<div class="box2-title">
+									车辆管理
+								</div>
+								<form class="layui-form cdc-form" action="">
+								  <div class="layui-form-item layui-row">
+										<div class="layui-inline layui-col-lg4 layui-col-md4">
+											<label class="layui-form-label">车牌号</label>
+											<div class="layui-input-inline">
+												<input type="text" name="title" required  lay-verify="required" placeholder="请输入车牌" autocomplete="off" class="layui-input">
+											</div>
+										</div>
+										<div class="layui-inline layui-col-lg4 layui-col-md4">
+											<label class="layui-form-label">车辆状态</label>
+											<div class="layui-input-inline">
+												<select name="city" lay-verify="required">
+													<option value=""></option>
+													<option value="0">北京</option>
+													<option value="1">上海</option>
+													<option value="2">广州</option>
+													<option value="3">深圳</option>
+													<option value="4">杭州</option>
+												</select>
+											</div>
+										</div>
+								  </div>
+								  <div class="layui-form-item layui-row">
+										<div class="layui-inline layui-col-lg4 layui-col-md4">
+											<label class="layui-form-label">车辆类型</label>
+											<div class="layui-input-inline">
+												<select name="city" lay-verify="required">
+													<option value=""></option>
+													<option value="0">北京</option>
+													<option value="1">上海</option>
+													<option value="2">广州</option>
+													<option value="3">深圳</option>
+													<option value="4">杭州</option>
+												</select>
+											</div>
+										</div>
+										<div class="layui-inline layui-col-lg4 layui-col-md4">
+											<label class="layui-form-label">归属部门</label>
+											<div class="layui-input-inline">
+												<select name="city" lay-verify="required">
+													<option value=""></option>
+													<option value="0">北京</option>
+													<option value="1">上海</option>
+													<option value="2">广州</option>
+													<option value="3">深圳</option>
+													<option value="4">杭州</option>
+												</select>
+											</div>
+										</div>
+										<div class="layui-inline layui-col-lg4 layui-col-md4">
+										  <button class="layui-btn layui-btn-danger" lay-submit lay-filter="carSs">查找</button>
+										</div>
+								  </div>
+								</form>
+							</div>
+							<div class="box2-content" style="margin-top: 20px;">
+								<table class="layui-hide" id="carlists"></table>
+								<script type="text/html" id="carListsBar">
+								  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+								  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+								</script>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-lg3">
+					<div class="cdc-box1" style="height: 22vh;">
+						<div class="left-hr"></div>
+						<div class="right-hr"></div>
+						<div class="top-hr" style="width:60%"></div>
+						<div class="bottom-hr"></div>
+						<div class="top-hr-b" style="left: 140px;"></div>
+						<div class="bottom-hr-b1"></div>
+						<div class="bottom-hr-b2"></div>
+						<div class="box1-title" style="width: 140px;">
+							部门车辆统计
+						</div>
+						<div class="box1-content">
+							<div id="carDept" style="height: 20vh;">
+								
+							</div>
+						</div>
+						
+					</div>
+					<div class="cdc-box1 mgt20" style="height: 20vh;">
+						<div class="left-hr"></div>
+						<div class="right-hr"></div>
+						<div class="top-hr" style="width:60%"></div>
+						<div class="bottom-hr"></div>
+						<div class="top-hr-b" style="left: 100px;"></div>
+						<div class="bottom-hr-b1"></div>
+						<div class="bottom-hr-b2"></div>
+						<div class="box1-title" style="width: 100px;">
+							新能源车
+						</div>
+						<div class="box1-content">
+							<div id="carNE" style="height: 18vh;">
+								
+							</div>
+						</div>
+						
+					</div>
+					<div class="cdc-box1 mgt20" style="height: 22vh;">
+						<div class="left-hr"></div>
+						<div class="right-hr"></div>
+						<div class="top-hr" style="width:60%"></div>
+						<div class="bottom-hr"></div>
+						<div class="top-hr-b" style="left: 140px;"></div>
+						<div class="bottom-hr-b1"></div>
+						<div class="bottom-hr-b2"></div>
+						<div class="box1-title" style="width: 140px;">
+							车辆月里程排行
+						</div>
+						<div class="box1-content">
+							<div id="carMileage" style="height: 20vh;">
+								
+							</div>
+						</div>
+						
+					</div>
+					<div class="cdc-box1 mgt20" style="height: 22vh;">
+						<div class="left-hr"></div>
+						<div class="right-hr"></div>
+						<div class="top-hr" style="width:60%"></div>
+						<div class="bottom-hr"></div>
+						<div class="top-hr-b" style="left: 140px;"></div>
+						<div class="bottom-hr-b1"></div>
+						<div class="bottom-hr-b2"></div>
+						<div class="box1-title" style="width: 140px;">
+							油卡充值预警
+						</div>
+						<div class="box1-content">
+							<div id="carOil" style="height: 20vh;">
+								
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	<script src="./layui/layui.js"></script>
+	<script src="js/ringLightFun.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/bar2.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/pie.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/xbar.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/gauge.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+	layui.use(['layer', 'form','element','table'], function(){
+	  var layer = layui.layer
+	  ,form = layui.form
+		,element = layui.element
+		,table = layui.table;
+	  //监听提交
+		form.on('submit(carSs)', function(data){
+			layer.msg(JSON.stringify(data.field));
+			return false;
+		});
+		//车辆列表
+		table.render({
+		    elem: '#carlists'
+		    ,url:'./carlist.json'
+		    ,cellMinWidth: 80
+				,page: true
+				,skin:'nob'
+				,even:'true'
+		    ,cols: [[
+		      {field:'carNo',  title: '车牌号'}
+		      ,{field:'carDept',  title: '所属部门'}
+		      ,{field:'carType',title: '车辆类型'}
+		      ,{field:'carStatus',title: '车辆状态'}
+					,{fixed: 'right', title:'操作', toolbar: '#carListsBar', width:150}
+		    ]]
+		  });
+	});
+	</script>
+	<script type="text/javascript">
+		var num = 156;
+		var digits = num.toString().split('');
+		var realDigits = digits.map(Number);
+		var html = '';
+		realDigits.forEach(function(e){
+			html += '<li>'+e+'</li>';
+		})
+		$("#cont1").html(html);
+		
+		// 车辆状态统计
+		var carStatusElm = document.getElementById('carStatus');
+		var carStatus = Object.create(pie);
+		carStatus.pieCreate([{name:'已出车',value:20},{name:'未出车',value:32} , {name:'已派遣',value:5}],carStatusElm,{color:['#2ca1ff','#fd5151','#febe13','#0adbfa','#65e5dd','#7b2cff','#f071ff', '#85f67a']});
+		// 车辆类型使用统计
+		var carTypeElm = document.getElementById('carType');
+		var carType = Object.create(bar2);
+		carType.createBar2([{name:'小型汽车',countValue:120,currValue:20},{name:'商务车',countValue:132,currValue:82} , {name:'中巴',countValue:101,currValue:90}, {name:'货车',countValue:134,currValue:34}, {name:'大巴',countValue:90,currValue:24}, {name:'越野车',countValue:80,currValue:14}],carTypeElm,{});
+		// 出行范围统计
+
+var carDeptElm = document.getElementById('carDept');
+		var carDept = Object.create(pie);
+		carDept.pieCreate([{name:'部门车辆',value:20},{name:'车队车辆',value:32}],carDeptElm,{color:['#f071ff', '#85f67a'],formatter:'{c}'});
+
+// 新能源车统计
+		var carNEElm = document.getElementById('carNE');
+		var carNE = Object.create(pie);
+		carNE.pieCreate([{name:'新能源车',value:20},{name:'非新能源车',value:32}],carNEElm,{color:['#85f67a','#7b2cff','#f071ff', '#85f67a'],formatter:'{c}'});
+		
+		//车辆月里程数
+		var carMileageElm = document.getElementById('carMileage');
+		var carMileage = Object.create(xbar);
+		carMileage.createXbar([{name:'浙C12345',value:4667},{name:'浙C66666',value:3232},{name:'浙C66666',value:3232},{name:'浙C66666',value:3232},{name:'浙C66666',value:3232},{name:'浙C66666',value:3232},{name:'浙C66666',value:3232},{name:'浙C88888',value:3232}],carMileageElm,{color:['#51C5FD','#005BB1'],unit:'公里'});
+		
+		//油卡预警
+		var carOilElm = document.getElementById('carOil');
+		var carOil = Object.create(xbar);
+		carOil.createXbar([{name:'浙C12345',value:66},{name:'浙C66666',value:232},{name:'浙C66666',value:332},{name:'浙C66666',value:232},{name:'浙C66666',value:232},{name:'浙C66666',value:232},{name:'浙C66666',value:232},{name:'浙C88888',value:32}],carOilElm,{color:['#fd5151','#ff557f']});
+		
+		//年检预警
+		var carWarningNjElm = document.getElementById('carWarningNj');
+		var carWarning = Object.create(gauge);
+		carWarning.createGauge('50',carWarningNjElm,{title:'年检预警',color:['#97ff8f','#93ff61','#55ff00','#ff0000']});
+		
+		//保养预警
+		var carWarningByElm = document.getElementById('carWarningBy');
+		var carWarning = Object.create(gauge);
+		carWarning.createGauge('50',carWarningByElm,{title:'保养预警',color:['#b8feff','#aaffff','#00aaff','#ff0000']});
+		
+		//年限预警
+		var carWarningNxElm = document.getElementById('carWarningNx');
+		var carWarning = Object.create(gauge);
+		carWarning.createGauge('50',carWarningNxElm,{title:'年限预警',color:['#ffc9fb','#f4d2ff','#ff55ff','#ff0000']});
+		
+		//保险预警
+		var carWarningBxElm = document.getElementById('carWarningBx');
+		var carWarning = Object.create(gauge);
+		carWarning.createGauge('50',carWarningBxElm,{title:'保险预警',color:['#fffdb9','#fffbc0','#ffff00','#ff0000']});
+	</script>
+	</body>
+</html>

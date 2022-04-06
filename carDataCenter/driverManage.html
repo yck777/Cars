@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="./layui/css/layui.css">
+		<link rel="stylesheet" type="text/css" href="css/carDC.css"/>
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!-- header start -->
+		<div class="layui-fluid">
+			<div class="layui-row mgt10">
+				<div class="layui-col-lg1">
+					<ul class="layui-nav cdc-nav cdc-nav-left" lay-filter="">
+					  <li class="layui-nav-item cdc-nav-li">
+					    <a href="javascript:;" class="cdc-nav-li-a">导航菜单</a>
+					    <dl class="layui-nav-child"> <!-- 二级菜单 -->
+								<dd><a href="./index.html">首页</a></dd>
+								<dd><a href="./carManage.html">车辆管理</a></dd>
+								<dd><a href="./carUse.html">用车记录</a></dd>
+								<dd><a href="./carRepair.html">维修管理</a></dd>
+								<dd><a href="./driverManage.html">司机管理</a></dd>
+					    </dl>
+					  </li>
+					</ul>
+				</div>
+				<div class="layui-col-lg10">
+					<div class="cdc-nav-md">
+						<ul class="cdc-nav-left-skewY">
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+						<div class="sort-hr-left">
+							
+						</div>
+						<div class="cdc-time">
+							2021年10月10日 10:10:10
+						</div>
+						<div class="cdc-title">
+							司机管理
+						</div>
+						<div class="sort-hr-right">
+							
+						</div>
+						<ul class="cdc-nav-right-skewY">
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+					</div>
+				</div>
+				<div class="layui-col-lg1">
+					<ul class="layui-nav cdc-nav cdc-nav-right" lay-filter="">
+					  <li class="layui-nav-item cdc-nav-li">
+					    <a href="javascript:;" class="cdc-nav-li-a">账号管理</a>
+					    <dl class="layui-nav-child"> <!-- 二级菜单 -->
+					      <dd><a href="">修改密码</a></dd>
+					      <dd><a href="">管理记录</a></dd>
+					      <dd><a href="">退出登录</a></dd>
+					    </dl>
+					  </li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- header end -->
+		<div class="layui-fluid">
+			<div class="layui-row mgt20 layui-col-space10">
+				<div class="layui-col-lg3">
+					<div class="cdc-box1" style="height: 400px;">
+						<div class="left-hr"></div>
+						<div class="right-hr"></div>
+						<div class="top-hr"></div>
+						<div class="bottom-hr"></div>
+						<div class="top-hr-b"></div>
+						<div class="bottom-hr-b1"></div>
+						<div class="bottom-hr-b2"></div>
+						<div class="box1-title">
+							用车申请
+						</div>
+						<div class="box1-content">
+							<table class="layui-table cdc-table" lay-even lay-skin="nob">
+								<colgroup>
+								    <col width="80">
+								    <col width="80">
+								    <col>
+										<col width="80">
+								</colgroup>
+							  <thead>
+							    <tr>
+							      <th>申请人</th>
+							      <th>人数</th>
+							      <th>审批状态</th>
+										<th>操作</th>
+							    </tr> 
+							  </thead>
+							  <tbody>
+							    <tr>
+							      <td>贤心</td>
+							      <td>7</td>
+							      <td class="cdc-green">审批完成</td>
+										<td><button type="button" class="layui-btn layui-btn-xs layui-btn-normal">派车</button></td>
+							    </tr>
+							    <tr>
+							      <td>许闲心</td>
+							      <td>2</td>
+							      <td class="cdc-yellow">张国荣等审批中</td>
+										<td></td>
+							    </tr>
+									<tr>
+									  <td>许闲心</td>
+									  <td>2</td>
+									  <td class="cdc-red">审批拒绝</td>
+										<td></td>
+									</tr>
+							  </tbody>
+							</table>
+						</div>
+					</div>
+					
+					<div class="cdc-box1 mgt20" style="height: 250px;">
+						<div class="left-hr"></div>
+						<div class="right-hr"></div>
+						<div class="top-hr"></div>
+						<div class="bottom-hr"></div>
+						<div class="top-hr-b"></div>
+						<div class="bottom-hr-b1"></div>
+						<div class="bottom-hr-b2"></div>
+						<div class="box1-title">
+							当前车辆状态
+						</div>
+						<div class="box1-content">
+							<div id="carStatus" style="height: 220px;">
+								
+							</div>
+						</div>
+					</div>
+					
+					<div class="cdc-box1 mgt20" style="height: 270px;">
+						<div class="left-hr"></div>
+						<div class="right-hr"></div>
+						<div class="top-hr" style="width:60%"></div>
+						<div class="bottom-hr"></div>
+						<div class="top-hr-b" style="left: 140px;"></div>
+						<div class="bottom-hr-b1"></div>
+						<div class="bottom-hr-b2"></div>
+						<div class="box1-title" style="width: 140px;">
+							当前车辆类型空闲
+						</div>
+						<div class="box1-content">
+							<div id="carType" style="height: 260px;">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-lg6">
+					<div class="layui-row">
+						<div class="layui-col-lg3">
+							<div class="cdc-numBox1">
+								<div class="cdc-yuan1 rotation"></div>
+								<div class="cdc-yuan3 rotation2"></div>
+								<div class="cdc-yuan2">
+									<h2>68</h2>
+									<p>车辆总数</p>
+								</div>
+								
+							</div>
+							<div class="cdc-numBox1">
+								<div class="cdc-yuan4 rotation"></div>
+								<div class="cdc-yuan5">
+									<h2>42</h2>
+									<p>司机总数</p>
+								</div>
+							</div>
+							<div class="cdc-numBox1">
+								<div class="cdc-yuan6 rotation"></div>
+								<div class="cdc-yuan5">
+									<h2>22</h2>
+									<p>智能柜总数</p>
+								</div>
+							</div>
+						</div>
+						<div class="layui-col-lg6">
+							<div class="cdc-numBox2">
+								<h2>用车申请总数</h2>
+								<ul id="cont1" class=""></ul>
+							</div>							
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-lg3">
+					<div class="cdc-box1" style="height: 250px;">
+						<div class="left-hr"></div>
+						<div class="right-hr"></div>
+						<div class="top-hr" style="width:60%"></div>
+						<div class="bottom-hr"></div>
+						<div class="top-hr-b" style="left: 140px;"></div>
+						<div class="bottom-hr-b1"></div>
+						<div class="bottom-hr-b2"></div>
+						<div class="box1-title" style="width: 140px;">
+							出行范围统计
+						</div>
+						<div class="box1-content">
+							<div id="outType" style="height: 220px;">
+								
+							</div>
+						</div>
+						
+					</div>
+					<div class="cdc-box1 mgt20" style="height: 210px;">
+						<div class="left-hr"></div>
+						<div class="right-hr"></div>
+						<div class="top-hr" style="width:60%"></div>
+						<div class="bottom-hr"></div>
+						<div class="top-hr-b" style="left: 100px;"></div>
+						<div class="bottom-hr-b1"></div>
+						<div class="bottom-hr-b2"></div>
+						<div class="box1-title" style="width: 100px;">
+							新能源车
+						</div>
+						<div class="box1-content">
+							<div id="carNE" style="height: 180px;">
+								
+							</div>
+						</div>
+						
+					</div>
+					<div class="cdc-box1 mgt20" style="height: 220px;">
+						<div class="left-hr"></div>
+						<div class="right-hr"></div>
+						<div class="top-hr" style="width:60%"></div>
+						<div class="bottom-hr"></div>
+						<div class="top-hr-b" style="left: 140px;"></div>
+						<div class="bottom-hr-b1"></div>
+						<div class="bottom-hr-b2"></div>
+						<div class="box1-title" style="width: 140px;">
+							车辆月里程排行
+						</div>
+						<div class="box1-content">
+							<div id="carMileage" style="height: 200px;">
+								
+							</div>
+						</div>
+						
+					</div>
+					<div class="cdc-box1 mgt20" style="height: 220px;">
+						<div class="left-hr"></div>
+						<div class="right-hr"></div>
+						<div class="top-hr" style="width:60%"></div>
+						<div class="bottom-hr"></div>
+						<div class="top-hr-b" style="left: 140px;"></div>
+						<div class="bottom-hr-b1"></div>
+						<div class="bottom-hr-b2"></div>
+						<div class="box1-title" style="width: 140px;">
+							油卡充值预警
+						</div>
+						<div class="box1-content">
+							<div id="carOil" style="height: 200px;">
+								
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	<script src="./layui/layui.js"></script>
+	<script src="js/ringLightFun.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/bar2.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/pie.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/xbar.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+	layui.use(['layer', 'form','element'], function(){
+	  var layer = layui.layer
+	  ,form = layui.form
+		,element = layui.element;
+	  
+	});
+	</script>
+	<script type="text/javascript">
+		var num = 123456;
+		var digits = num.toString().split('');
+		var realDigits = digits.map(Number);
+		var html = '';
+		realDigits.forEach(function(e){
+			html += '<li>'+e+'</li>';
+		})
+		$("#cont1").html(html);
+		
+		// 车辆状态统计
+		var carStatusElm = document.getElementById('carStatus');
+		var carStatus = Object.create(pie);
+		carStatus.pieCreate([{name:'已出车',value:20},{name:'未出车',value:32} , {name:'已派遣',value:5}],carStatusElm,{color:['#2ca1ff','#fd5151','#febe13','#0adbfa','#65e5dd','#7b2cff','#f071ff', '#85f67a']});
+		// 车辆类型使用统计
+		var carTypeElm = document.getElementById('carType');
+		var carType = Object.create(bar2);
+		carType.createBar2([{name:'小型汽车',countValue:120,currValue:20},{name:'商务车',countValue:132,currValue:82} , {name:'中巴',countValue:101,currValue:90}, {name:'货车',countValue:134,currValue:34}, {name:'大巴',countValue:90,currValue:24}, {name:'越野车',countValue:80,currValue:14}],carTypeElm,{});
+		// 出行范围统计
+		var outElm= document.getElementById('outType');
+		var outType = Object.create(ringLightFun);
+		outType.createChrt([{
+    name: '市内',
+    value: 20
+},{
+    name: '市外',
+    value: 10
+},{
+    name: '省外',
+    value: 30
+}],outElm,{name:'',width:300,height:140,radius:[55, 59],center:['50%', '55%']});
+
+// 新能源车统计
+		var carNEElm = document.getElementById('carNE');
+		var carNE = Object.create(pie);
+		carNE.pieCreate([{name:'新能源车',value:20},{name:'非新能源车',value:32}],carNEElm,{color:['#85f67a','#7b2cff','#f071ff', '#85f67a']});
+		
+		//车辆月里程数
+		var carMileageElm = document.getElementById('carMileage');
+		var carMileage = Object.create(xbar);
+		carMileage.createXbar([{name:'浙C12345',value:4667},{name:'浙C66666',value:3232},{name:'浙C66666',value:3232},{name:'浙C66666',value:3232},{name:'浙C66666',value:3232},{name:'浙C66666',value:3232},{name:'浙C66666',value:3232},{name:'浙C88888',value:3232}],carMileageElm,{color:['#51C5FD','#005BB1'],unit:'公里'});
+		
+		//油卡预警
+		var carOilElm = document.getElementById('carOil');
+		var carOil = Object.create(xbar);
+		carOil.createXbar([{name:'浙C12345',value:66},{name:'浙C66666',value:232},{name:'浙C66666',value:332},{name:'浙C66666',value:232},{name:'浙C66666',value:232},{name:'浙C66666',value:232},{name:'浙C66666',value:232},{name:'浙C88888',value:32}],carOilElm,{color:['#fd5151','#ff557f']});
+	</script>
+	</body>
+</html>

@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>车辆数据中心</title>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="css/carDC.css" />
+    <script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <!-- header start -->
+    <div class="layui-fluid">
+        <div class="layui-row mgt10">
+            <div class="layui-col-lg1 layui-col-md1">
+                <ul class="layui-nav cdc-nav cdc-nav-left" lay-filter="">
+                    <li class="layui-nav-item cdc-nav-li">
+                        <a href="javascript:;" class="cdc-nav-li-a">导航菜单</a>
+                        <dl class="layui-nav-child">
+                            <!-- 二级菜单 -->
+                            <dd><a href="./index.html">首页</a></dd>
+                            <dd><a href="./carManage.html">车辆管理</a></dd>
+                            <dd><a href="./carUse.html">用车记录</a></dd>
+                            <dd><a href="./carRepair.html">维修管理</a></dd>
+                            <dd><a href="./driverManage.html">司机管理</a></dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+            <div class="layui-col-lg10 layui-col-md10">
+                <div class="cdc-nav-md">
+                    <ul class="cdc-nav-left-skewY">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <div class="sort-hr-left">
+
+                    </div>
+                    <div class="cdc-time">
+                        2021年10月10日 10:10:10
+                    </div>
+                    <div class="cdc-title">
+                        车辆大数据2.0
+                    </div>
+                    <div class="sort-hr-right">
+
+                    </div>
+                    <ul class="cdc-nav-right-skewY">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="layui-col-lg1 layui-col-md1">
+                <ul class="layui-nav cdc-nav cdc-nav-right" lay-filter="">
+                    <li class="layui-nav-item cdc-nav-li">
+                        <a href="javascript:;" class="cdc-nav-li-a">账号管理</a>
+                        <dl class="layui-nav-child">
+                            <!-- 二级菜单 -->
+                            <dd><a href="">修改密码</a></dd>
+                            <dd><a href="">管理记录</a></dd>
+                            <dd><a href="">退出登录</a></dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- header end -->
+    <div class="layui-fluid cdc-fluid">
+        <div class="layui-row mgt20 layui-col-space10">
+            <div class="layui-col-lg3 layui-col-md3">
+                <div class="cdc-box1" style="height: 30vh;">
+                    <div class="left-hr"></div>
+                    <div class="right-hr"></div>
+                    <div class="top-hr"></div>
+                    <div class="bottom-hr"></div>
+                    <div class="top-hr-b"></div>
+                    <div class="bottom-hr-b1"></div>
+                    <div class="bottom-hr-b2"></div>
+                    <div class="box1-title">
+                        空闲车辆预警
+                    </div>
+                    <div class="box1-content" id="kxcl" style="height: 29vh;">
+
+                    </div>
+                </div>
+                <div class="cdc-box1 mgt20" style="height: 33vh;">
+                    <div class="left-hr"></div>
+                    <div class="right-hr"></div>
+                    <div class="top-hr"></div>
+                    <div class="bottom-hr"></div>
+                    <div class="top-hr-b"></div>
+                    <div class="bottom-hr-b1"></div>
+                    <div class="bottom-hr-b2"></div>
+                    <div class="box1-title">
+                        年维修次数
+                    </div>
+                    <div class="box1-content">
+                        <div id="repairCont" style="height: 32vh;">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="cdc-box1 mgt20" style="height: 26vh;">
+                    <div class="left-hr"></div>
+                    <div class="right-hr"></div>
+                    <div class="top-hr"></div>
+                    <div class="bottom-hr"></div>
+                    <div class="top-hr-b"></div>
+                    <div class="bottom-hr-b1"></div>
+                    <div class="bottom-hr-b2"></div>
+                    <div class="box1-title">
+                        月出车次数
+                    </div>
+                    <div class="box1-content">
+                        <div id="carUseNum" style="height: 25vh;">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-lg6 layui-col-md6">
+                <form action="" method="post" class="layui-form cdc-form" style="margin-top: 0;">
+                    <div class="layui-form-item layui-row">
+                        <div class="layui-col-lg4 layui-col-md4">
+                            <div class="layui-inline">
+                                <select id="selName" name="city" lay-verify="required" lay-search lay-filter="watch">
+									<option value ="" >请选择车辆</option>
+								</select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <div id="wrapper" style="height: 59vh;">
+                    <div class="cdc-che">
+                        <div class="che-img">
+                            <img src="img/che.png">
+                            <div class="che-s che-s1">
+                                <span class="che-y1"></span>
+                                <h6 class="h6l">车辆年限</h6>
+                                <h4 class="h4l">3年</h4>
+                            </div>
+                            <div class="che-s che-s2">
+                                <span class="che-y1"></span>
+                                <h6 class="h6l">总里程数</h6>
+                                <h4 class="h4l">65861公里</h4>
+                            </div>
+                            <div class="che-s che-s3">
+                                <span class="che-y1"></span>
+                                <h6 class="h6l">平均油耗</h6>
+                                <h4 class="h4l">9.1Km/L</h4>
+                            </div>
+                            <div class="che-s che-s4">
+                                <span class="che-y2"></span>
+                                <h6 class="h6r">维修次数</h6>
+                                <h4 class="h4r">12次</h4>
+                            </div>
+                            <div class="che-s che-s5">
+                                <span class="che-y2"></span>
+                                <h6 class="h6r">保养次数</h6>
+                                <h4 class="h4r">6次</h4>
+                            </div>
+                            <div class="che-s che-s6">
+                                <span class="che-y2"></span>
+                                <h6 class="h6r">年检次数</h6>
+                                <h4 class="h4r">3次</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-row">
+                    <div class="cdc-box1" style="height: 28vh;">
+                        <div class="left-hr"></div>
+                        <div class="right-hr"></div>
+                        <div class="top-hr" style="width:60%"></div>
+                        <div class="bottom-hr"></div>
+                        <div class="top-hr-b" style="left: 140px;"></div>
+                        <div class="bottom-hr-b1"></div>
+                        <div class="bottom-hr-b2"></div>
+                        <div class="box1-title" style="width: 140px;">
+                            车辆月检
+                        </div>
+                        <div class="box1-content">
+                            <div class="cdc-yj">
+                                <form action="" method="post" class="layui-form cdc-form">
+                                    <button type="button" class="layui-btn cdc-btn">车辆异常检测</button>
+                                    <span>上次检测时间：2022-2-23 10:12</span>
+                                    <span class="che-jc">已检测完成282辆车</span>
+                                </form>
+                                <table class="cdc-table cdc-ywtable">
+                                    <thead>
+                                        <tr>
+                                            <th align="left">检测项目</th>
+                                            <th align="left">检测进度</th>
+                                            <th align="left">检测结果</th>
+                                            <th align="center" width="80">详情</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="content">
+                                        <tr id="refueling" class="layui-tda">
+                                            <td align="left" class="cdc-yellow2">加油异常</td>
+                                            <td align="left">已完成</td>
+                                            <td align="left" class="cdc-red">1辆车存在二次加油</td>
+                                            <td align="center" width="80" class="cdc-btn2">
+                                                <button type="button" class="layui-btn layui-btn-xs cdc-btn">查看</button>
+                                            </td>
+                                        </tr>
+                                        <tr id="fuel" class="layui-tda">
+                                            <!-- <td align="left" class="cdc-yellow2">油耗异常</td>
+                                            <td align="left">已完成</td>
+                                            <td align="left" class="cdc-red">1辆车油耗过高</td>
+                                             -->
+                                            <!-- <td align="center" width="80" class="cdc-btn2">
+                                                <button type="button" class="layui-btn layui-btn-xs cdc-btn">查看</button>
+                                            </td> -->
+                                        </tr>
+                                        <tr class="layui-tda">
+                                            <td align="left" class="cdc-yellow2">维修异常</td>
+                                            <td align="left">已完成</td>
+                                            <td align="left" class="cdc-red">1辆车维修配件异常</td>
+                                            <td align="center" width="80" class="cdc-btn2">
+                                                <button type="button" class="layui-btn layui-btn-xs cdc-btn">查看</button>
+                                            </td>
+                                        </tr>
+                                        <tr id="annual" class="layui-tda">
+                                            <!-- <td align="left" class="cdc-yellow2">年检到期</td> -->
+                                            <!-- <td align="left">已完成</td>
+                                            <td align="left" class="cdc-green">正常</td>
+                                              -->
+                                            <!-- <td align="center" width="80"  class="cdc-btn2">
+                                                <button type="button" class="layui-btn layui-btn-xs cdc-btn cdc-btn2">查看</button>
+                                            </td> -->
+                                        </tr>
+                                        <tr class="layui-tda">
+                                            <td align="left" class="cdc-yellow2">保养到期</td>
+                                            <td align="left">检测中 <img src="img/jiazai.png" class="revolve-img" width="20px"></td>
+                                            <td align="left"></td>
+                                            <td align="center" width="80" class="cdc-btn2">
+                                                <button type="button" class="layui-btn layui-btn-xs cdc-btn">查看</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="layui-col-lg3 layui-col-md3">
+                <div class="cdc-box1" style="height: 30vh;">
+                    <div class="left-hr"></div>
+                    <div class="right-hr"></div>
+                    <div class="top-hr"></div>
+                    <div class="bottom-hr"></div>
+                    <div class="top-hr-b"></div>
+                    <div class="bottom-hr-b1"></div>
+                    <div class="bottom-hr-b2"></div>
+                    <div class="box1-title">
+                        油耗排行
+                    </div>
+                    <div class="box1-content" style="padding-top: 20px;">
+                        <div id="fuelConsumption" style="height: 26vh;"> </div>
+                    </div>
+                </div>
+                <div class="cdc-box1 mgt20" style="height: 29.5vh;">
+                    <div class="left-hr"></div>
+                    <div class="right-hr"></div>
+                    <div class="top-hr"></div>
+                    <div class="bottom-hr"></div>
+                    <div class="top-hr-b"></div>
+                    <div class="bottom-hr-b1"></div>
+                    <div class="bottom-hr-b2"></div>
+                    <div class="box1-title">
+                        费用支出趋势
+                    </div>
+                    <div class="box1-content">
+                        <div id="disbursement" style="height: 26vh;"></div>
+                    </div>
+                </div>
+                <div class="cdc-box1 mgt20" style="height: 29.5vh;">
+                    <div class="left-hr"></div>
+                    <div class="right-hr"></div>
+                    <div class="top-hr"></div>
+                    <div class="bottom-hr"></div>
+                    <div class="top-hr-b"></div>
+                    <div class="bottom-hr-b1"></div>
+                    <div class="bottom-hr-b2"></div>
+                    <div class="box1-title">
+                        设备预警
+                    </div>
+                    <div class="box1-content">
+                        <div id="lockerStatus" style="height: 26vh;">
+                            <table class="early-table early-table" lay-even lay-skin="nob">
+                                <colgroup>
+                                    <col width="100">
+                                    <col width="140">
+                                    <col>
+                                    <col width="55">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>设备</th>
+                                        <th class="fault-th">故障内容</th>
+                                        <th>时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="equipment-car">机关车辆钥匙智能柜离线</td>
+                                        <td class="equipment-offline">离线</td>
+                                        <td class="equipment-time">12:18</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="equipment-car">机关车辆钥匙智能柜离线</td>
+                                        <td class="equipment-offline">离线</td>
+                                        <td class="equipment-time">12:18</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="equipment-car">机关车辆钥匙智能柜离线</td>
+                                        <td class="equipment-offline">离线</td>
+                                        <td class="equipment-time">12:18</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="equipment-car">机关车辆钥匙智能柜离线</td>
+                                        <td class="equipment-offline">离线</td>
+                                        <td class="equipment-time">12:18</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="equipment-car">机关车辆钥匙智能柜离线</td>
+                                        <td class="equipment-offline">离线</td>
+                                        <td class="equipment-time">12:18</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 弹窗 -->
+    <div id="maintenance-window">
+        <div class="header-font">
+            <p>浙G1234维修记录</p>
+            <div class="img-close">
+                <img src="img/close.png" alt="">
+            </div>
+        </div>
+        <div class="content-detail">
+            <table class="content-table">
+                <thead>
+                    <tr>
+                        <th>维修时间</th>
+                        <th>发送人</th>
+                        <th>报损原因</th>
+                        <th>维修内容</th>
+                        <th>维修金额</th>
+                        <th>配件详情</th>
+                    </tr>
+                </thead>
+                <tbody id="iTable">
+                    <tr>
+                        <td>2020-03-05</td>
+                        <td>董建华</td>
+                        <td>漏油</td>
+                        <td>发动机密封圈</td>
+                        <td class="money">2000</td>
+                        <td class="aBtn">
+                            <a href="javascript:;">查看</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2020-03-05</td>
+                        <td>董建华</td>
+                        <td>漏油</td>
+                        <td>发动机密封圈</td>
+                        <td class="money">2000</td>
+                        <td class="aBtn">
+                            <a href="javascript:;">查看</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2020-03-05</td>
+                        <td>董建华</td>
+                        <td>漏油</td>
+                        <td>发动机密封圈</td>
+                        <td class="money">2000</td>
+                        <td class="aBtn">
+                            <a href="javascript:;">查看</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2020-03-05</td>
+                        <td>董建华</td>
+                        <td>漏油</td>
+                        <td>发动机密封圈</td>
+                        <td class="money">2000</td>
+                        <td class="aBtn">
+                            <a href="javascript:;">查看</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2020-03-05</td>
+                        <td>董建华</td>
+                        <td>漏油</td>
+                        <td>发动机密封圈</td>
+                        <td class="money">2000</td>
+                        <td class="aBtn">
+                            <a href="javascript:;">查看</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2020-03-05</td>
+                        <td>董建华</td>
+                        <td>漏油</td>
+                        <td>发动机密封圈</td>
+                        <td class="money">2000</td>
+                        <td class="aBtn">
+                            <a href="javascript:;">查看</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2020-03-05</td>
+                        <td>董建华</td>
+                        <td>漏油</td>
+                        <td>发动机密封圈</td>
+                        <td class="money">2000</td>
+                        <td class="aBtn">
+                            <a href="javascript:;">查看</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2020-03-05</td>
+                        <td>董建华</td>
+                        <td>漏油</td>
+                        <td>发动机密封圈</td>
+                        <td class="money">2000</td>
+                        <td class="aBtn">
+                            <a href="javascript:;">查看</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2020-03-05</td>
+                        <td>董建华</td>
+                        <td>漏油</td>
+                        <td>发动机密封圈</td>
+                        <td class="money">2000</td>
+                        <td class="aBtn">
+                            <a href="javascript:;">查看</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2020-03-05</td>
+                        <td>董建华</td>
+                        <td>漏油</td>
+                        <td>发动机密封圈</td>
+                        <td class="money">2000</td>
+                        <td class="aBtn">
+                            <a href="javascript:;">查看</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2020-03-05</td>
+                        <td>董建华</td>
+                        <td>漏油</td>
+                        <td>发动机密封圈</td>
+                        <td class="money">2000</td>
+                        <td class="aBtn">
+                            <a href="javascript:;">查看</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2020-03-05</td>
+                        <td>董建华22</td>
+                        <td>漏油</td>
+                        <td>发动机密封圈</td>
+                        <td class="money">2000</td>
+                        <td class="aBtn">
+                            <a href="javascript:;">查看</a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="footer-pagination">
+            <div class="pagination-left">
+                <div class="img-left">
+                    <img src="img/left.png" alt="">
+                </div>
+                <div class="pagination">
+                    <div class="pagination-box">
+                        <ul>
+                            <li class="current">1</li>
+                            <li>2</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="img-right">
+                    <img src="img/right.png" alt="">
+                </div>
+            </div>
+            <div class="pagination-right">
+                <div class="pagination-center">
+                    <label for="toFirs">到第
+								<input type="text" name="text" id="toFirs" value="1">页
+							</label>
+                    <input type="button" id="btnClick" value="确定">
+                    <span>共20条</span>
+                    <form action="" method="post">
+                        <select id="sel" class="drop-down">
+						    <option value="0" disabled selected>10条/1页</option>
+						    <option id="first-drop" value="1" >第1页</option>
+							<option id="last-drop" value="2" >第2页</option>
+						</select>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 内嵌弹窗 -->
+    <div id="car-parts">
+        <div class="header-font">
+            <p>配件价格明细</p>
+            <div class="img-close img-close2">
+                <img src="img/close.png" alt="">
+            </div>
+        </div>
+        <div class="parts-detail">
+            <form action="#">
+                <table class="parts-content">
+                    <thead>
+                        <tr>
+                            <th>名称</th>
+                            <th>材料类型</th>
+                            <th>位置描述</th>
+                            <th>单价</th>
+                            <th>数量</th>
+                            <th>总价</th>
+                        </tr>
+                    </thead>
+                    <tbody>·
+                        <tr>
+                            <td class="car-blue">坐垫</td>
+                            <td class="car-red">持续持续</td>
+                            <td class="car-blue">啊啊啊啊啊</td>
+                            <td class="car-blue">0/个</td>
+                            <td class="car-blue">2</td>
+                            <td class="car-blue">200</td>
+                        </tr>
+                        <tr>
+                            <td class="car-blue">后视镜</td>
+                            <td class="car-red">持续持续</td>
+                            <td class="car-blue">啊啊啊</td>
+                            <td class="car-blue">0/个</td>
+                            <td class="car-blue">3</td>
+                            <td class="car-blue">165</td>
+                        </tr>
+                        <tr>
+                            <td class="car-blue">新配件</td>
+                            <td class="car-red">材料1-新材料</td>
+                            <td class="car-blue">啊</td>
+                            <td class="car-blue">0/块</td>
+                            <td class="car-blue">1</td>
+                            <td class="car-blue">45</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+
+    <!-- 汽车检测弹窗 -->
+    <div id="car-testing">
+        <div class="header-font">
+            <p>加油异常</p>
+            <div class="img-close img-close3">
+                <img src="img/close.png" alt="">
+            </div>
+        </div>
+        <div class="testing-detail">
+            <form action="#">
+                <table class="testing-content">
+                    <thead>
+                        <tr>
+                            <th>车辆名称</th>
+                            <th>检测结果</th>
+                        </tr>
+                    </thead>
+                    <tbody id="iTr">
+                        <tr>
+                            <td class="car-blue">汽车A</td>
+                            <td class="car-red">二次加油</td>
+                        </tr>
+                        <tr>
+                            <td class="car-blue">汽车B</td>
+                            <td class="car-red">二次加油</td>
+                        </tr>
+                        <tr>
+                            <td class="car-blue">汽车B</td>
+                            <td class="car-red">二次加油</td>
+                        </tr>
+                        <tr>
+                            <td class="car-blue">汽车A</td>
+                            <td class="car-red">二次加油</td>
+                        </tr>
+                        <tr>
+                            <td class="car-blue">汽车B</td>
+                            <td class="car-red">二次加油</td>
+                        </tr>
+                        <tr>
+                            <td class="car-blue">汽车B</td>
+                            <td class="car-red">二次加油</td>
+                        </tr>
+                        <tr>
+                            <td class="car-blue">汽车A</td>
+                            <td class="car-red">二次加油</td>
+                        </tr>
+                        <tr>
+                            <td class="car-blue">汽车B</td>
+                            <td class="car-red">二次加油</td>
+                        </tr>
+                        <tr>
+                            <td class="car-blue">汽车B</td>
+                            <td class="car-red">二次加油</td>
+                        </tr>
+                        <tr>
+                            <td class="car-blue">汽车A</td>
+                            <td class="car-red">二次加油</td>
+                        </tr>
+                        <tr>
+                            <td class="car-blue">汽车B</td>
+                            <td class="car-red">二次加油</td>
+                        </tr>
+                        <tr>
+                            <td class="car-blue">汽车B</td>
+                            <td class="car-red">二次加油</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <div style="height: 5vh;" class="testing-barcon">
+            <ul class="testing-td">
+            </ul>
+        </div>
+    </div>
+
+    <script src="./layui/layui.js"></script>
+    <script src="js/ywcarAjax.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/pie.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/bar2.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/pie2.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/gauges.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/pieSemiCircle.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/barlinear.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/xbar.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/line2.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/eject.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/detection.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/eject2.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/testin.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        layui.use(['layer', 'form', 'element'], function() {
+            var layer = layui.layer,
+                form = layui.form,
+                element = layui.element;
+
+        });
+    </script>
+
+    <script>
+        // 空闲车辆
+        var carStatusElm = document.getElementById('kxcl');
+        var carStatus = Object.create(gauges);
+        carStatus.createGauges(newDeptFree, carStatusElm, {
+            color: ['#2ca1ff', '#fd5151', '#febe13', '#0adbfa', '#65e5dd', '#7b2cff', '#f071ff', '#85f67a']
+        });
+
+        // 车辆维修统计
+        var repairContElm = document.getElementById('repairCont');
+        var repairCont = Object.create(xbar);
+        repairCont.createXbar(newsCar, repairContElm, {
+            color: ['#fd5151', '#ffae0b']
+        });
+
+        // 出车次数
+        var carUseNumElm = document.getElementById('carUseNum');
+        var carUseNum = Object.create(xbar);
+        carUseNum.createXbar(newsUserCar, carUseNumElm, {
+            color: ['#00aaff', '#00ffff']
+        });
+
+        // 车辆类型使用统计
+        // var carTypeElm = document.getElementById('carType');
+        // var carType = Object.create(bar2);
+        // carType.createBar2([{
+        //     name: '小型汽车',
+        //     countValue: 120,
+        //     currValue: 20
+        // }, {
+        //     name: '商务车',
+        //     countValue: 132,
+        //     currValue: 82
+        // }, {
+        //     name: '中巴',
+        //     countValue: 101,
+        //     currValue: 90
+        // }, {
+        //     name: '货车',
+        //     countValue: 134,
+        //     currValue: 34
+        // }, {
+        //     name: '大巴',
+        //     countValue: 90,
+        //     currValue: 24
+        // }, {
+        //     name: '越野车',
+        //     countValue: 80,
+        //     currValue: 14
+        // }], carTypeElm, {});
+
+        // 油耗排行
+        var fuelConsumptionElm = document.getElementById('fuelConsumption');
+        var fuelConsumption = Object.create(xbar);
+        fuelConsumption.createXbar([{
+            name: '浙G2900警',
+            value: 22
+        }, {
+            name: '浙G0171警',
+            value: 36
+        }, {
+            name: '浙G2197警',
+            value: 30
+        }, {
+            name: '浙G2106警',
+            value: 43
+        }, {
+            name: '浙G2177警',
+            value: 55
+        }, {
+            name: '浙G1613警',
+            value: 20
+        }, {
+            name: '浙G0563警',
+            value: 15
+        }, {
+            name: '浙G1099警',
+            value: 79
+        }, {
+            name: '浙G0902警',
+            value: 48
+        }, {
+            name: '浙G0972警',
+            value: 42
+        }], fuelConsumptionElm, {
+            color: ['red', '#fff']
+        });
+
+        //费用支出
+        var disbursementElm = document.getElementById('disbursement');
+        var disbursement = Object.create(line2);
+        disbursement.createLine([{
+            name: '维修费',
+            value: valueRepair
+        }, {
+            name: '燃油费',
+            value: valueFuel
+        }, {
+            name: '保险费',
+            value: valueInsurance
+        }], disbursementElm, {
+            color: ['red', 'green', 'blue', 'orange'],
+            xAxisData: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
+        })
+
+
+        // 监控设备
+        // var videoStatusElm = document.getElementById('videoStatus');
+        // var videoStatus = Object.create(pie2);
+        // videoStatus.createPie2([{
+        //     name: '正常',
+        //     value: 14294
+        // }, {
+        //     name: '报警',
+        //     value: 314
+        // }, {
+        //     name: '离线',
+        //     value: 5137
+        // }, {
+        //     name: '故障',
+        //     value: 245
+        // }], videoStatusElm, {
+        //     color: ['#00ffff', '#ffe000', '#ff5b00', '#ff3000', '#409B5C', '#006ced', '#ffa800']
+        // });
+        // 钥匙柜
+        // var lockerStatusElm = document.getElementById('lockerStatus');
+        // var lockerStatus = Object.create(pieSemiCircle);
+        // lockerStatus.createPieSC([{
+        //     name: '正常',
+        //     value: 10
+        // }, {
+        //     name: '离线',
+        //     value: 4
+        // }], lockerStatusElm, {
+        //     color: ['#00aaff', '#ffaa00', '#00ffff', '#ffff00', 'rgba(76,141,250,.3)', 'rgba(255,209,139,.3)', 'rgba(92,207,255,.3)', 'rgba(253,173,89,.3)']
+        // });
+
+        // 告警
+        // var warning = document.getElementById('warning');
+        // var warningChart = echarts.init(warning);
+        // var warningOption;
+
+        // warningOption = {
+        //     color: ['#dd3ee5', '#12e78c', '#fe8104', '#01C2F9', '#F4CB29', '#4962FC', '#FD9E06', '#4B7CF3'],
+        //     tooltip: {
+        //         trigger: 'axis',
+        //         axisPointer: {
+        //             type: 'shadow'
+        //         }
+        //     },
+        //     legend: {
+        //         top: '0',
+        //         left: 'center',
+        //         textStyle: {
+        //             color: '#fff'
+        //         }
+        //     },
+        //     grid: {
+        //         left: '3%',
+        //         right: '4%',
+        //         bottom: '3%',
+        //         containLabel: true
+        //     },
+        //     xAxis: {
+        //         type: 'value',
+        //         boundaryGap: [0, 0.01],
+        //         axisLabel: {
+        //             color: '#fff'
+        //         }
+        //     },
+        //     yAxis: {
+        //         type: 'category',
+        //         data: ['年检', '保险', '保养', '年限'],
+        //         axisLabel: {
+        //             color: '#fff'
+        //         }
+        //     },
+        //     series: [{
+        //         type: 'bar',
+        //         name: '告警数',
+        //         data: [18, 23, 29, 10, 13, 6],
+        //         barWidth: '20'
+        //     }]
+        // };
+
+        // warningOption && warningChart.setOption(warningOption);
+        // // 请假
+        // var driverContElm = document.getElementById('driverCont');
+        // var driverCont = Object.create(barlinear);
+        // driverCont.createBarLinear([{
+        //     name: '22日',
+        //     value: 3
+        // }, {
+        //     name: '23日',
+        //     value: 4
+        // }, {
+        //     name: '24日',
+        //     value: 3
+        // }, {
+        //     name: '25日',
+        //     value: 4
+        // }, {
+        //     name: '26日',
+        //     value: 3
+        // }, {
+        //     name: '27日',
+        //     value: 4
+        // }, {
+        //     name: '28日',
+        //     value: 1
+        // }], driverContElm, {
+        //     color: ['#83bff6', '#188df0', '#188df0', '#2378f7', '#2378f7', '#83bff6'],
+        //     name: "请假数"
+        // });
+    </script>
+</body>
+
+</html>

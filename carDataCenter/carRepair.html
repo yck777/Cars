@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="./layui/css/layui.css">
+		<link rel="stylesheet" type="text/css" href="css/carDC.css"/>
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!-- header start -->
+		<div class="layui-fluid">
+			<div class="layui-row mgt10">
+				<div class="layui-col-lg1">
+					<ul class="layui-nav cdc-nav cdc-nav-left" lay-filter="">
+					  <li class="layui-nav-item cdc-nav-li">
+					    <a href="javascript:;" class="cdc-nav-li-a">导航菜单</a>
+					    <dl class="layui-nav-child"> <!-- 二级菜单 -->
+								<dd><a href="./index.html">首页</a></dd>
+					      <dd><a href="./carManage.html">车辆管理</a></dd>
+					      <dd><a href="./carUse.html">用车记录</a></dd>
+					      <dd><a href="./carRepair.html">维修管理</a></dd>
+								<dd><a href="./driverManage.html">司机管理</a></dd>
+					    </dl>
+					  </li>
+					</ul>
+				</div>
+				<div class="layui-col-lg10">
+					<div class="cdc-nav-md">
+						<ul class="cdc-nav-left-skewY">
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+						<div class="sort-hr-left">
+							
+						</div>
+						<div class="cdc-time">
+							2021年10月10日 10:10:10
+						</div>
+						<div class="cdc-title">
+							维修管理
+						</div>
+						<div class="sort-hr-right">
+							
+						</div>
+						<ul class="cdc-nav-right-skewY">
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+					</div>
+				</div>
+				<div class="layui-col-lg1">
+					<ul class="layui-nav cdc-nav cdc-nav-right" lay-filter="">
+					  <li class="layui-nav-item cdc-nav-li">
+					    <a href="javascript:;" class="cdc-nav-li-a">账号管理</a>
+					    <dl class="layui-nav-child"> <!-- 二级菜单 -->
+					      <dd><a href="">修改密码</a></dd>
+					      <dd><a href="">管理记录</a></dd>
+					      <dd><a href="">退出登录</a></dd>
+					    </dl>
+					  </li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- header end -->
+		<div class="layui-fluid">
+			<div class="layui-row mgt20 layui-col-space10">
+				<div class="layui-col-lg3">
+					<div class="cdc-box1" style="height: 18vh;">
+						<div class="left-hr"></div>
+						<div class="right-hr"></div>
+						<div class="top-hr"></div>
+						<div class="bottom-hr"></div>
+						<div class="top-hr-b"></div>
+						<div class="bottom-hr-b1"></div>
+						<div class="bottom-hr-b2"></div>
+						<div class="box1-title">
+							维修次数月趋势
+						</div>
+						<div class="box1-content">
+							<div id="dealFreqByM" style="height: 16vh;">
+								
+							</div>
+						</div>
+					</div>
+					<div class="cdc-box1 mgt20" style="height: 18vh;">
+						<div class="left-hr"></div>
+						<div class="right-hr"></div>
+						<div class="top-hr"></div>
+						<div class="bottom-hr"></div>
+						<div class="top-hr-b"></div>
+						<div class="bottom-hr-b1"></div>
+						<div class="bottom-hr-b2"></div>
+						<div class="box1-title">
+							维修金额月趋势
+						</div>
+						<div class="box1-content">
+							<div id="dealMoneyByM" style="height: 16vh;">
+								
+							</div>
+						</div>
+					</div>
+					
+					<div class="cdc-box1 mgt20" style="height: 24vh;">
+						<div class="left-hr"></div>
+						<div class="right-hr"></div>
+						<div class="top-hr"></div>
+						<div class="bottom-hr"></div>
+						<div class="top-hr-b"></div>
+						<div class="bottom-hr-b1"></div>
+						<div class="bottom-hr-b2"></div>
+						<div class="box1-title">
+							零部件处理方式
+						</div>
+						<div class="box1-content">
+							<div id="partsDeal" style="height: 22vh;">
+								
+							</div>
+						</div>
+					</div>
+					
+					<div class="cdc-box1 mgt20" style="height: 26vh;">
+						<div class="left-hr"></div>
+						<div class="right-hr"></div>
+						<div class="top-hr" style="width:60%"></div>
+						<div class="bottom-hr"></div>
+						<div class="top-hr-b" style="left: 140px;"></div>
+						<div class="bottom-hr-b1"></div>
+						<div class="bottom-hr-b2"></div>
+						<div class="box1-title" style="width: 140px;">
+							维修类型统计
+						</div>
+						<div class="box1-content">
+							<div id="repairType" style="height: 24vh;">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-lg6">
+					<div class="layui-row">
+						<div class="layui-col-lg3">
+							<div class="cdc-numBox2">
+								<h4>车辆维修总次数</h4>
+								<p>33</p>
+							</div>
+						</div>
+						<div class="layui-col-lg6">
+							<div class="cdc-numBox2">
+								<h2>车辆维修总金额</h2>
+								<ul id="cont1" class=""></ul>
+							</div>
+						</div>
+						<div class="layui-col-lg3">
+							<div class="cdc-numBox2">
+								<h4>车辆检查总次数</h4>
+								<p>33</p>
+							</div>
+						</div>
+					</div>
+					<div class="cdc-box2 mgt50">
+						<div class="box2-ss">
+							<div class="box2-title">
+								车辆维修管理
+							</div>
+							<form class="layui-form cdc-form" action="">
+							  <div class="layui-form-item layui-row">
+									<div class="layui-inline layui-col-lg4 layui-col-md4">
+										<label class="layui-form-label">车牌号</label>
+										<div class="layui-input-inline">
+											<input type="text" name="title" required  lay-verify="required" placeholder="请输入车牌号" autocomplete="off" class="layui-input">
+										</div>
+									</div>
+									<div class="layui-inline layui-col-lg4 layui-col-md4">
+										<label class="layui-form-label">联系人</label>
+										<div class="layui-input-inline">
+											<input type="text" name="title" required  lay-verify="required" placeholder="请输入联系人" autocomplete="off" class="layui-input">
+										</div>
+									</div>
+									<div class="layui-inline layui-col-lg4 layui-col-md4">
+										<label class="layui-form-label">审批状态</label>
+										<div class="layui-input-inline">
+											<select name="city" lay-verify="required">
+												<option value=""></option>
+												<option value="0">审批通过</option>
+												<option value="1">审批拒绝</option>
+												<option value="2">审批退回</option>
+											</select>
+										</div>
+									</div>
+									<div class="layui-inline layui-col-lg4 layui-col-md4">
+										<label class="layui-form-label">清单状态</label>
+										<div class="layui-input-inline">
+											<select name="city" lay-verify="required">
+												<option value=""></option>
+												<option value="0">审批通过</option>
+												<option value="1">审批拒绝</option>
+												<option value="2">审批退回</option>
+											</select>
+										</div>
+									</div>
+									<div class="layui-inline layui-col-lg6 layui-col-md6">
+										<label class="layui-form-label" style="width: 20%;">申请时间</label>
+										<div class="layui-inline" style="width: calc(80% - 0.5vw);">
+											<div class="layui-input-inline" style="width: calc(50% - 10px);">
+												<input type="text" name="date1" id="date1" autocomplete="off" class="layui-input" placeholder="起">
+											</div>
+											<div class="layui-input-inline" style="width: calc(50% - 10px);">
+												<input type="text" name="date2" id="date2" autocomplete="off" class="layui-input" placeholder="止">
+											</div>
+										</div>
+									</div>
+									<div class="layui-inline layui-col-lg2 layui-col-md2">
+									  <button class="layui-btn layui-btn-danger" lay-submit lay-filter="carSs">查找</button>
+									</div>
+							    
+							  </div>
+							</form>
+						</div>
+						<div class="box2-content">
+							<table class="layui-hide" id="applyRepair"></table>
+							 <script type="text/html" id="stTpl">
+							 {{#  if(d.Status == 1){ }}
+							  <span class="cdc-green">审批通过</span>
+								{{#  } else if(d.Status == 2){ }}
+								 <span class="cdc-red">审批拒绝</span>
+								{{#  } else { }}
+								<span class="cdc-yellow">审批退回</span>
+								{{#  } }}
+							</script>
+							<script type="text/html" id="stTpl2">
+							 {{#  if(d.Status2 == 1){ }}
+							  <span class="cdc-green">审批通过</span>
+								{{#  } else if(d.Status2 == 2){ }}
+								 <span class="cdc-red">审批拒绝</span>
+								{{#  } else { }}
+								<span class="cdc-yellow">审批退回</span>
+								{{#  } }}
+							</script>
+							<script type="text/html" id="ListsBar">
+								<a class="layui-btn layui-btn-normal layui-btn-xs">查看</a> 
+							</script>
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-lg3">
+					<div class="cdc-box1" style="height: 22vh;">
+						<div class="left-hr"></div>
+						<div class="right-hr"></div>
+						<div class="top-hr" style="width:60%"></div>
+						<div class="bottom-hr"></div>
+						<div class="top-hr-b" style="left: 140px;"></div>
+						<div class="bottom-hr-b1"></div>
+						<div class="bottom-hr-b2"></div>
+						<div class="box1-title" style="width: 140px;">
+							最新预警
+						</div>
+						<div class="box1-content">
+							<ul class="cdc-warn">
+								<li><a href="" class="cdc-red">库存预警：轮胎数量不足5条</a><img src="img/warn2.png" class="warning-img"></li>
+								<li><a href="" class="cdc-red">库存预警：大灯数量不足2个</a><img src="img/warn2.png" class="warning-img"></li>
+								<li><a href="" class="cdc-red">占用预警：浙C5003警维修占用</a><img src="img/warn2.png" class="warning-img"></li>
+							</ul>
+						</div>
+						
+					</div>
+					<div class="cdc-box1 mgt20" style="height: 15vh;">
+						<div class="left-hr"></div>
+						<div class="right-hr"></div>
+						<div class="top-hr" style="width:60%"></div>
+						<div class="bottom-hr"></div>
+						<div class="top-hr-b" style="left: 100px;"></div>
+						<div class="bottom-hr-b1"></div>
+						<div class="bottom-hr-b2"></div>
+						<div class="box1-title" style="width: 100px;">
+							维修材料TOP5
+						</div>
+						<div class="box1-content">
+							<div id="material" style="height: 14vh;">
+								
+							</div>
+						</div>
+						
+					</div>
+					<div class="cdc-box1 mgt20" style="height: 22vh;">
+						<div class="left-hr"></div>
+						<div class="right-hr"></div>
+						<div class="top-hr" style="width:60%"></div>
+						<div class="bottom-hr"></div>
+						<div class="top-hr-b" style="left: 140px;"></div>
+						<div class="bottom-hr-b1"></div>
+						<div class="bottom-hr-b2"></div>
+						<div class="box1-title" style="width: 140px;">
+							车辆修理年排行
+						</div>
+						<div class="box1-content">
+							<div id="repairNum" style="height: 20vh;">
+								
+							</div>
+						</div>
+						
+					</div>
+					<div class="cdc-box1 mgt20" style="height: 27vh;">
+						<div class="left-hr"></div>
+						<div class="right-hr"></div>
+						<div class="top-hr" style="width:60%"></div>
+						<div class="bottom-hr"></div>
+						<div class="top-hr-b" style="left: 140px;"></div>
+						<div class="bottom-hr-b1"></div>
+						<div class="bottom-hr-b2"></div>
+						<div class="box1-title" style="width: 140px;">
+							维修单位比例
+						</div>
+						<div class="box1-content">
+							<div id="shop" style="height: 25vh;">
+								
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	<script src="./layui/layui.js"></script>
+	<script src="js/ringLightFun.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/bar2.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/pie.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/xbar.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/barlinear.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/line.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+	layui.use(['layer', 'form','element','table'], function(){
+	  var layer = layui.layer
+	  ,form = layui.form
+		,element = layui.element
+		,table = layui.table
+		, laydate = layui.laydate;
+		laydate.render({
+			elem: '#date1'
+			,theme: 'cdc'
+			,showBottom: false
+		});
+		laydate.render({
+			elem: '#date2'
+			,theme: 'cdc'
+			,showBottom: false
+		});
+	  //车辆列表
+	  table.render({
+	      elem: '#applyRepair'
+	      ,url:'./repair.json'
+	      ,cellMinWidth: 80
+	  		,page: {
+					layout:['prev', 'page', 'next', 'count']
+				}
+	  		,limit:10
+	  		,skin:'nob'
+	  		,even:'true'
+	      ,cols: [[
+	        {field:'carNo',  title: '车牌号',style:'padding:6px 0'}
+	        ,{field:'user',  title: '联系人'}
+	        ,{field:'time',title: '申请时间',width:150}
+	        ,{field:'Status',title: '审批状态',templet: '#stTpl'}
+	  			,{field:'Status2',title: '清单状态',templet: '#stTpl2'}
+	  			,{fixed: 'right', title:'操作', toolbar: '#ListsBar', width:150}
+	      ]]
+	    });
+	});
+	</script>
+	<script type="text/javascript">
+		var num = 123456;
+		var digits = num.toString().split('');
+		var realDigits = digits.map(Number);
+		var html = '';
+		realDigits.forEach(function(e){
+			html += '<li>'+e+'</li>';
+		})
+		$("#cont1").html(html);
+		
+		// 零部件
+		var partsDealElm = document.getElementById('partsDeal');
+		var partsDeal = Object.create(pie);
+		partsDeal.pieCreate([{name:'厂方回收',value:20},{name:'保留备查',value:32}],partsDealElm,{color:['#2ca1ff','#fd5151','#febe13'],formatter:'{d}%'});
+		// 维修类型统计
+		var repairTypeElm = document.getElementById('repairType');
+		var repairType = Object.create(barlinear);
+		repairType.createBarLinear([{name:'保养',value:3},{name:'维修',value:4},{name:'装潢',value:3},{name:'事故',value:4},{name:'轮胎',value:3},{name:'检测',value:4}],repairTypeElm,{color:['#83bff6','#188df0','#188df0','#2378f7','#2378f7','#83bff6'],name:"维修数"});
+		
+
+	// 维修材料TOP5
+		var materialElm = document.getElementById('material');
+		var material = Object.create(xbar);
+		material.createXbar([{name:'火花塞',value:66},{name:'机油',value:232},{name:'轮胎',value:332},{name:'刹车片',value:232},{name:'空气滤芯',value:232}],materialElm,{color:['#fd5151','#ff557f']});
+		
+		//车辆维修年度排行
+		var repairNumElm = document.getElementById('repairNum');
+		var repairNum = Object.create(xbar);
+		repairNum.createXbar([{name:'浙C12345',value:46},{name:'浙C66666',value:32},{name:'浙C66666',value:3},{name:'浙C66666',value:3},{name:'浙C66666',value:3},{name:'浙C66666',value:2},{name:'浙C66666',value:2},{name:'浙C88888',value:2}],repairNumElm,{color:['#51C5FD','#005BB1'],unit:'次'});
+		
+		//维修单位比例
+		var shopElm = document.getElementById('shop');
+		var shop = Object.create(pie);
+		shop.pieCreate([{name:'华昌轿车修理厂',value:20},{name:'宝泰汽车修理厂',value:32} , {name:'威龙汽车维修厂',value:5}, {name:'温州亿汇汽车维修有限公司',value:5}, {name:'温州市豪邦轿车维修有限公司',value:5}, {name:'阿春汽车修理厂',value:5}],shopElm,{color:['#2ca1ff','#fd5151','#febe13','#0adbfa','#65e5dd','#7b2cff','#f071ff', '#85f67a'],formatter:'{d}%'});
+		//维修次数月趋势
+		var dealFreqByMElm = document.getElementById('dealFreqByM');
+		var dealFreqByM = Object.create(line);
+		dealFreqByM.createLine([{value:[120, 132, 101, 134, 90, 230, 210]}],dealFreqByMElm,{color:['#febe13'],xAxisData:['1月', '2月', '3月', '4月', '5月', '6月', '7月']});
+		
+		//维修金额月趋势
+		var dealMoneyByMElm = document.getElementById('dealMoneyByM');
+		var dealMoneyByM = Object.create(line);
+		dealMoneyByM.createLine([{value:[120, 132, 101, 134, 90, 230, 210]}],dealMoneyByMElm,{color:['#55ff00'],xAxisData:['1月', '2月', '3月', '4月', '5月', '6月', '7月']});
+	</script>
+	</body>
+</html>

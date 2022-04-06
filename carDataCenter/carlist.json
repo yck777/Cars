@@ -1,0 +1,29 @@
+{"data":[{
+    "carNo": "浙C12345","carDept":"警务保障部","carType":"小型轿车","carStatus":"空闲"
+}, {
+    "carNo": "浙C22222","carDept":"警务保障部","carType":"越野车","carStatus":"空闲"
+},{
+    "carNo": "浙C12345","carDept":"警务保障部","carType":"小型轿车","carStatus":"空闲"
+}, {
+    "carNo": "浙C22222","carDept":"警务保障部","carType":"越野车","carStatus":"空闲"
+},{
+    "carNo": "浙C12345","carDept":"警务保障部","carType":"小型轿车","carStatus":"空闲"
+}, {
+    "carNo": "浙C22222","carDept":"警务保障部","carType":"越野车","carStatus":"空闲"
+},{
+    "carNo": "浙C12345","carDept":"警务保障部","carType":"小型轿车","carStatus":"空闲"
+}, {
+    "carNo": "浙C22222","carDept":"警务保障部","carType":"越野车","carStatus":"空闲"
+},{
+    "carNo": "浙C12345","carDept":"警务保障部","carType":"小型轿车","carStatus":"空闲"
+}, {
+    "carNo": "浙C22222","carDept":"警务保障部","carType":"越野车","carStatus":"空闲"
+},{
+    "carNo": "浙C12345","carDept":"警务保障部","carType":"小型轿车","carStatus":"空闲"
+}, {
+    "carNo": "浙C22222","carDept":"警务保障部","carType":"越野车","carStatus":"空闲"
+},{
+    "carNo": "浙C12345","carDept":"警务保障部","carType":"小型轿车","carStatus":"空闲"
+}, {
+    "carNo": "浙C22222","carDept":"警务保障部","carType":"越野车","carStatus":"空闲"
+}],"code":"0","limit":"10","count":"20"}
